@@ -419,7 +419,7 @@ exports.XMLHttpRequest = function() {
         + "}).on('error', function(error) {"
         + "fs.writeFileSync('" + syncFile + "', 'NODE-XMLHTTPREQUEST-ERROR:' + JSON.stringify(error), 'utf8');"
         + "});"
-        + (data ? "req.write('" + JSON.stringify(data).slice(1,-1).replace(/'/g, "\\'") + "');":"")
+        + (data ? "req.write('" + data.replace(/'/g, "\\'") + "');":"")
         + "req.end();";
       // Start the other Node Process, executing this string
       syncProc = spawn(process.argv[0], ["-e", execString]);
